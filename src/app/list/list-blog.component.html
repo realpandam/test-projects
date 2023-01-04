@@ -1,6 +1,20 @@
-<section class="page">
-    <section class="page-header">
-        
+<section class="list">
+    <section class="list-header">
+        Blog
     </section>
-    <section class="page-body"></section>
+    <section class="list-body">
+        <!--<mat-card class="mat-elevation-z5">-->
+            <table class="blog-table">
+                <tr style="margin: 5px 0" *ngFor="let e of this.tableData">
+                    <mat-card class="card mat-elevation-z8" >
+                        <th class="title">{{e.title}} Nadpis</th>
+                        <td><img src="assets/images/emoji.jpg"></td>{{e.thumbnail}}
+                        <td class="text">{{e.detail}} dlouhy textsdasfaeggfacvasdasdasdadgfacvasdasdasdadgfacvasdasdasdadgfacvasdasdasdadfacvasdasdasdadad</td>
+                    </mat-card>
+                </tr>
+            </table>
+            <mat-paginator [length]="this.tableData.length" [pageSize]="5"></mat-paginator>
+            <!--<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>-->
+        <!--</mat-card>-->
+    </section>
 </section>

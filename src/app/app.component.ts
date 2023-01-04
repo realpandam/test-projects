@@ -13,8 +13,4 @@ export class AppComponent {
     { id: 'T:3', label: 'Oblíbené', icon: 'favorite', routeLink: '' },
   ]
 
-
-  testClick() {
-    console.log("Proběhlo testovací kliknutí");
-  }
 }

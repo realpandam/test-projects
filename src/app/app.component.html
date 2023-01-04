@@ -6,11 +6,11 @@
 </section>
 
 <section class="page-body">
-  <mat-sidenav-container style="height: 100%">
+  <!--<mat-sidenav-container style="height: 100%">
     <mat-sidenav #sidemenu opened mode="side">
       <div *ngFor="let button of this.menuButtons">
         <div class="menu-buttons">
-          <button mat-button [routerLink]="'/list'"><!--routerLink-->
+          <button mat-button [routerLink]="'/list'">
             <mat-icon *ngIf="button.icon" fontIcon="{{button.icon}}"></mat-icon>
             {{button.label}}
           </button>
@@ -21,6 +21,7 @@
       TEST2-content
       <router-outlet></router-outlet>
     </mat-sidenav-content>
-  </mat-sidenav-container>
+  </mat-sidenav-container>-->
+  <router-outlet></router-outlet>
 </section>
 
