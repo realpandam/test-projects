@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
 
   constructor(private user: UsersService) {}
 
-  ngOnInit() {//ngOnChange
+  ngOnInit() {
     this.sub = this.user.getData().subscribe(data => {
       console.log("data", data);
       let d = JSON.parse(JSON.stringify(data));

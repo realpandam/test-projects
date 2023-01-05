@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class TestDataService {
 
   constructor(private http: HttpClient) { }
 
   getData() {
-    let url = 'https://endevel-task.doc.endevel.cz/api_documentation/?format=openapi';
+    let url = 'https://jsonplaceholder.typicode.com/posts';
     return this.http.get(url);
   }
 }

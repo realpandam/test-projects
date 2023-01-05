@@ -12,6 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
 
 //componenty
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ const MODULES = [
   MatCardModule,
   MatTableModule,
   MatPaginatorModule,
+  MatChipsModule,
 ]
 
 const COMPONENTS = [

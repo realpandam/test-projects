@@ -4,13 +4,13 @@
     padding: 15px;
     .list-header {
         width: 100%;
-        height: 55px;
+        height: 50px;
         font-size: 18px;
     }
 
     .list-body {
         width: 100%;
-        height: calc(100% - 55px);
+        height: calc(100% - 50px);
         .blog-table {
             display: flex;
             flex-direction: column;
