@@ -3,18 +3,39 @@
         Blog
     </section>
     <section class="list-body">
-        <!--<mat-card class="mat-elevation-z5">-->
-            <table class="blog-table">
-                <tr style="margin: 5px 0" *ngFor="let e of this.tableData">
-                    <mat-card class="card mat-elevation-z8" >
-                        <th class="title">{{e.title}} Nadpis</th>
-                        <td><img src="assets/images/emoji.jpg"></td>{{e.thumbnail}}
-                        <td class="text">{{e.detail}} dlouhy textsdasfaeggfacvasdasdasdadgfacvasdasdasdadgfacvasdasdasdadgfacvasdasdasdadfacvasdasdasdadad</td>
+        <div style="display: flex;">
+            <table mat-table class="blog-table" [dataSource]="this.tableData">
+                <ng-container matColumnDef="row">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let row">
+                        <mat-card class="card mat-elevation-z8">
+                            <span class="title">{{row.title}}</span>
+                            <img width="100%" src="assets/images/transparent.png"><!--{{row.thumbnail}}-->
+                            <span class="text">{{row.body}}</span>
+                        </mat-card>
+                    </td>
+                </ng-container>
+                <!--<tr *ngFor="let e of this.tableData">
+                    <mat-card class="card mat-elevation-z8">
+                        <th class="title">{{e.title}}</th>
+                        <td><img width="100%" src="assets/images/transparent.png"></td>{{e.thumbnail}}
+                        <td class="text">{{e.body}}
+                        </td>
                     </mat-card>
-                </tr>
+                </tr>-->
+    
+                <tr mat-header-row *matHeaderRowDef="['row']"></tr>
+                <tr mat-row *matRowDef="let row; columns: ['row']; sticky: true" (click)="goForDetail(row)"></tr>
             </table>
-            <mat-paginator [length]="this.tableData.length" [pageSize]="5"></mat-paginator>
-            <!--<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>-->
-        <!--</mat-card>-->
+            <mat-card class="card-tags mat-elevation-z8">
+                <mat-chip-listbox class="tags">
+                    <mat-chip-option>Kuchyně</mat-chip-option>
+                    <mat-chip-option>Móda</mat-chip-option>
+                    <mat-chip-option selected>Technologie</mat-chip-option>
+                    <mat-chip-option>Zahradnictví</mat-chip-option>
+                </mat-chip-listbox>
+            </mat-card>
+        </div>
+        <mat-paginator class="paginator" [pageSizeOptions]="[2, 3, 5]" [length]="this.tableData.length" [pageSize]="1" (page)="test($event)"></mat-paginator>
     </section>
 </section>
