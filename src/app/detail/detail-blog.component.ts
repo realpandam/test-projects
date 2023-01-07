@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UsersService } from '../users.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TestDataService } from '../test-data.service';
 
 @Component({
@@ -12,23 +12,31 @@ export class DetailComponent {
   sub: any;
   sub2: any;
 
-  constructor(private user: UsersService, private data: TestDataService) { }
+  tags: any = [{ value: 'fashion', label: 'Móda' }, { value: 'cooking', label: 'Vaření' }, { value: 'technology', label: 'Technologie' }, { value: 'gardening', label: 'Zahradnictví' }];
+
+  pageId: any;
+  detailData: any = {};
+
+  constructor(private service: TestDataService, private router: Router, private route: ActivatedRoute) {
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras.state as {
+      row: any,
+    };
+    this.detailData = state.row;
+  }
+
+  goToDetail(x: string) {
+    if (x == 'next') {
+      let id = +this.pageId + 1;
+      this.router.navigate(['/detail', id]); //navigationExtras
+    } else if (x == 'prev') {
+      let id = +this.pageId - 1;
+      this.router.navigate(['/detail', id]);
+    }
+  }
 
   ngOnInit() {
-    this.sub = this.user.getData().subscribe(data => {
-      console.log("user", data);
-      let d = JSON.parse(JSON.stringify(data));
-
-    })
-    this.sub2 = this.data.getData().subscribe(data => {
-      console.log("data", data);
-      let d = JSON.parse(JSON.stringify(data));
-
-    })
+    this.pageId = this.route.snapshot.paramMap.get('id');
   }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-    this.sub2.unsubscribe();
-  }
 }

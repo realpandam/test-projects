@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,9 @@ export class AppComponent {
     { id: 'T:3', label: 'Oblíbené', icon: 'favorite', routeLink: '' },
   ]
 
+  constructor(private router: Router) {}
+
+  goToHomepage() {
+    this.router.navigate(['/list'])
+  }
 }

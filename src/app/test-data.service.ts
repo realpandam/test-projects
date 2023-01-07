@@ -8,8 +8,13 @@ export class TestDataService {
 
   constructor(private http: HttpClient) { }
 
-  getData() {
+  getJSONData() {
     let url = 'https://jsonplaceholder.typicode.com/posts';
+    return this.http.get(url);
+  }
+
+  getOpenAPI() {
+    let url = 'https://endevel-task.doc.endevel.cz/api_documentation/?format=openapi';
     return this.http.get(url);
   }
 }

@@ -1,17 +1,30 @@
 <section class="detail">
     <section class="detail-header">
-        Nadpis blogu
+        {{detailData.title}}
     </section>
     <section class="detail-body">
         <mat-card class="card mat-elevation-z8">
-            <mat-chip-listbox class="tags">
-                <mat-chip-option>Kuchyně</mat-chip-option>
-                <mat-chip-option>Móda</mat-chip-option>
-                <mat-chip-option selected>Technologie</mat-chip-option>
-                <mat-chip-option>Zahradnictví</mat-chip-option>
-            </mat-chip-listbox>
-            <!--<img src="assets/images/emoji.jpg">-->
-            <div class="text">dlouhý text</div>
+            <div class="top-feat">
+                <mat-chip-listbox class="tags">
+                    <mat-chip-option *ngFor="let tag of detailData.tags" selected>
+                        <ng-container *ngFor="let x of tags">
+                            <ng-container *ngIf="x.value == tag">{{x.label}}</ng-container>
+                        </ng-container>
+                    </mat-chip-option>
+                </mat-chip-listbox>
+                <div class="buttons">
+                    <button mat-fab color="primary" style="margin-right: 5px" matTooltip="Předchozí článek" (click)="goToDetail('prev')">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+                    <button mat-fab color="primary" matTooltip="Následující článek" (click)="goToDetail('next')">
+                        <mat-icon>arrow_forward</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="img">
+                <img src="assets/images/emoji.jpg">
+            </div>
+            <div class="text" [innerHTML]="detailData.body"></div>
         </mat-card>
     </section>
 </section>
