@@ -20,12 +20,12 @@ export class ListComponent implements OnInit {
   tags: any = [{ value: 'fashion', label: 'Móda' }, { value: 'cooking', label: 'Vaření' }, { value: 'technology', label: 'Technologie' }, { value: 'gardening', label: 'Zahradnictví' }]
   activeFilters: any = [];
 
+  imgArray: any = ["assets/images/transparent.png", "assets/images/penguin.png", "assets/images/garden.jpg", "assets/images/emoji.png"]
+
   list: any = {};
   detail: any = {};
   tag: any = {};
 
-  tableDef: any = [{ def: "thumbnail", title: "" }, { def: "title", title: "Nadpis" }, { def: "detail", title: "Úvod" }];
-  displayedColumns = ['thumbnail', 'title', 'detail'];
   tableData: any = [];
   dataSource = new MatTableDataSource();
 
@@ -48,16 +48,21 @@ export class ListComponent implements OnInit {
       this.tableData = d.splice(0, 10);
       this._copyTable = this.tableData;
       for (let index = 0; index < this.tableData.length; index++) {
+        /*  náhodné přiřazení tagu */
         let num = Math.floor(Math.random() * 4);
         //this.tableData[index]['tags'] = this.tags[num].value;     //pro jeden štítek na detailu
         this.tableData[index]['tags'] = [];
         this.tableData[index]['tags'].push(this.tags[num].value); //pro více štítku na jednom detailu
-        
         /*přidání druhého štítku -> pro filter*/
         if (index > 4) {
           let num2 = Math.floor(Math.random() * 4);
           if (this.tableData[index]['tags'][0] != this.tags[num2].value) this.tableData[index]['tags'].push(this.tags[num2].value);
         }
+
+        /*  náhodné přiřazení obrázku */
+        let num2 = Math.floor(Math.random() * 3);
+        this.tableData[index]['img'] = [];
+        this.tableData[index]['img'].push(this.imgArray[num2]);
       }
       this.dataSource = new MatTableDataSource(this.tableData);
       this.dataSource.paginator = this.paginator;

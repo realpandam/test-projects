@@ -2,6 +2,17 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
+    .detail-navigation {
+        font-size: 13px;
+        display: flex;
+        margin-top: -11px;
+        >div {
+            padding: 0 5px 0 5px;
+        }
+        .active-link {
+            font-weight: 500 !important;
+        }
+    }
     .detail-header {
         width: 100%;
         height: 50px;
@@ -13,14 +24,15 @@
         width: 100%;
         max-height: calc(100% - 50px);
         .card {
+            box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%) !important;
+            border-radius: 1rem;
             .top-feat {
                 display: flex;
-                width: 100%;
+                padding: 5px;
                 .tags {
                     display: flex;
                     align-items: center;
-                    padding: 3px;
-                    padding-bottom: 5px;
+                    padding-left: 0.85rem;
                 }
                 .buttons {
                     margin-left: auto;
@@ -28,11 +40,14 @@
             }
             .img {
                display: flex;
-               justify-content: center; 
+               justify-content: center;
+               >img {
+                    max-height: 50vh;
+                    max-width: 50vw;
+               }
             }
             .text {
-
-                padding: 3px;
+                padding: 10px;
                 font-size: 16px;
             }
         }

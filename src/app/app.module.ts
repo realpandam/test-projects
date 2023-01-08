@@ -47,7 +47,7 @@ const COMPONENTS = [
   declarations: [COMPONENTS],
   imports: [MODULES],
   providers: [],
-  bootstrap: [COMPONENTS]
+  bootstrap: [AppComponent]
 })
 
 export class AppModule { }

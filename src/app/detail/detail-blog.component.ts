@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { TestDataService } from '../test-data.service';
 
 @Component({
@@ -17,12 +17,17 @@ export class DetailComponent {
   pageId: any;
   detailData: any = {};
 
-  constructor(private service: TestDataService, private router: Router, private route: ActivatedRoute) {
+  constructor(private service: TestDataService, public router: Router, public route: ActivatedRoute) {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state as {
       row: any,
     };
-    this.detailData = state.row;
+    if (state != undefined) {
+      this.detailData = state.row;
+    } else {
+      console.log("undefined row(id) -> list")
+      this.router.navigate(['/list']);
+    }
   }
 
   goToDetail(x: string) {
