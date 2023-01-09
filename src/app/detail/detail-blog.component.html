@@ -1,0 +1,36 @@
+<section class="detail">
+    <section class="detail-navigation">
+        <div style="padding-left: 0px; cursor: pointer;" [routerLink]="['/list']">Úvodní obrazovka</div>
+        <div>—</div>
+        <div routerLink="/detail/{{pageId}}" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">{{pageId}}</div>
+    </section>
+    <section class="detail-header">
+        {{detailData.title}}
+    </section>
+    <section class="detail-body">
+        <mat-card class="card mat-elevation-z5">
+            <div class="top-feat">
+                <mat-chip-listbox class="tags">
+                    <mat-chip-option *ngFor="let tag of detailData.tags" selected style="pointer-events: none">
+                        <ng-container *ngFor="let x of tags">
+                            <ng-container *ngIf="x.value == tag">{{x.label}}</ng-container>
+                        </ng-container>
+                    </mat-chip-option>
+                </mat-chip-listbox>
+                <div class="buttons">
+                    <button mat-fab color="primary" style="margin-right: 5px" matTooltip="Předchozí článek" disabled
+                        (click)="goToDetail('prev')">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+                    <button mat-fab color="primary" matTooltip="Následující článek" (click)="goToDetail('next')" disabled>
+                        <mat-icon>arrow_forward</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="img">
+                <img src="{{detailData.img[0]}}">
+            </div>
+            <div class="text" [innerHTML]="detailData.body"></div>
+        </mat-card>
+    </section>
+</section>

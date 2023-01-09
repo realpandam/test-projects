@@ -1,0 +1,113 @@
+@use '@angular/material' as mat;
+
+.list {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    .list-navigation {
+        font-size: 13px;
+        display: flex;
+        margin-top: -11px;
+        .active-link {
+            font-weight: 500 !important;
+        }
+    }
+    .list-header {
+        width: 100%;
+        height: 50px;
+        font-size: 24px;
+        padding-top: 10px;
+    }
+    .list-body {
+        width: 100%;
+        height: calc(100% - 50px);
+        .blog-table {
+            /*display: flex;
+            flex-direction: row;
+            border-collapse: inherit;
+            flex-wrap: wrap;
+            >tr {
+                width: 50%;
+                margin: 5px 0px 15px 0px;
+                display: flex;
+                justify-content: center;
+            }*/
+            .card {
+                //width: 50%;
+                min-height: 400px !important;
+                margin: 5px 0px !important;
+                cursor: pointer;
+                &:hover {
+                    box-shadow: 1px 3px 1px -2px rgb(0 0 0 / 19%), 1px 2px 2px 1px rgb(0 0 0 / 12%), 1px 1px 5px 2px rgb(0 0 0 / 30%) !important
+                }
+                .title {
+                    background-color: #f8f8f8;
+                    font-size: 24px;
+                    font-weight: 400;
+                    text-align: center;
+                }
+                .text {
+                    display: flex;
+                    font-size: 16px;
+                    padding: 0 1rem;
+                    word-break: break-all;
+                }
+            }
+            .paginator {
+                bottom: 0px !important;
+                position: sticky !important;
+                z-index: 10 !important;
+            }
+        }
+        .card-tags {
+            min-width: 200px!important;
+            height: fit-content;
+            .tags-label {
+                color: rgb(0, 0, 0, 0.87);;
+                margin: 5px 5px 0 5px;
+                border-bottom: 1px solid rgb(0, 0, 0, 0.57);
+                font-family: var(--mdc-typography-body2-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+                font-size: 18px;
+            }
+            .tags {
+                padding: 15px;
+            }
+        }
+    }
+}
+
+::ng-deep {
+    app-list-blog {
+        table {
+            min-width: calc(100% - 200px) !important;
+            thead {
+                display: none;
+            }
+            tbody {
+                display: flex !important;
+                flex-direction: row !important;
+                border-collapse: inherit !important;
+                flex-wrap: wrap;
+                >tr {
+                    height: auto !important;
+                    width: 50% !important;
+                    margin: 5px 0px 15px 0px !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                    >td {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        border: none !important;
+                        width: 70% !important;
+                    }
+                }
+            }
+        }
+        .paginator {
+            bottom: 0px !important;
+            position: sticky !important;
+            z-index: 10 !important;
+        }
+    }
+
+}
