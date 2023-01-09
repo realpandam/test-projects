@@ -19,6 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list-blog.component';
 import { DetailComponent } from './detail/detail-blog.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const MODULES = [
   BrowserModule,
@@ -46,7 +47,7 @@ const COMPONENTS = [
 @NgModule({
   declarations: [COMPONENTS],
   imports: [MODULES],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 
